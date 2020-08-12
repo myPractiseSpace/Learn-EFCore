@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <Folder Include="GitImage\" />
+    <Folder Include="Models\Partial\" />
   </ItemGroup>
 
 </Project>
