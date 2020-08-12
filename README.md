@@ -98,3 +98,41 @@ PM> update-database -verbose
 PM> Add-Migration  [記錄名稱]  
 PM> update-database -verbose  
 ```  
+
+
+# 第二章建立Model (DB-first)
+以DB-first方法建立
+## 第一步:
+### 執行DB連線建立Model
+```C#
+Scaffold-DbContext "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=EFCore;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context CCIPContext -DataAnnotations -Force
+//-OutputDir 資料夾名   :建立的資料夾名
+//-Context 連線檔檔名   :建立連線檔檔名
+//-DataAnnotations     :加上欄位設定內容
+//-Force               :強制產生新Model
+```
+執行完語法後,如圖自動產生Model  
+![image](https://github.com/Tim-SideProjectOrTool/Learn-EFCore/blob/master/ConsoleApp1/GitImage/DBFirst%E5%9F%B7%E8%A1%8CScaffold-DbContext%E5%BE%8C%E7%94%A2%E7%94%9F%E7%9A%84Model.PNG)  
+
+
+## 第二步:
+### 建立自定義屬性
+產生一個Partial的資料夾,並以 Products.cs 為範例  
+新增一個同檔名,但是副檔名由[.cs]改為[.partial.cs]  
+![image](https://github.com/Tim-SideProjectOrTool/Learn-EFCore/blob/master/ConsoleApp1/GitImage/DBFirst%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%AE%9A%E7%BE%A9%E5%B1%AC%E6%80%A7.PNG)  
+
+
+## 第三步:
+### 建立檔案
+1. 這個Partial Class必須跟這個物件相同NameSpace  
+2. 在Partial Class裡新增一個類別，通常命名方式：原檔名+MD。  
+3. 在Partial Class上加上MetadataType，已建立RANGERMD與RANGER的關係  
+4.可以直接把原.cs檔的所有欄位貼到.partial.cs, 並加上自定義的屬性, 如:[Display]等...  
+ ![image](https://github.com/Tim-SideProjectOrTool/Learn-EFCore/blob/master/ConsoleApp1/GitImage/%E5%BB%BA%E7%AB%8B%E8%87%AA%E5%AE%9A%E7%BE%A9%E5%B1%AC%E6%80%A7class.PNG)  
+
+# 註:
+當完成第三步後,如果DB修改後再執行第一步,也不會覆蓋自定的Partial Class內容
+
+[ 參考資源 文章 ][[ASP.NET MVC]使用 DataAnnotations 屬性](https://dotblogs.com.tw/chentingw/2016/11/28/235523 "")  
+[ 參考資源 影片 ][Working with an Existing Database | Entity Framework Core 101 [2 of 5]](https://www.youtube.com/watch?v=-sftSA9_X-k&list=PLdo4fOcmZ0oX7uTkjYwvCJDG2qhcSzwZ6&index=2 "")  
+
