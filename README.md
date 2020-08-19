@@ -136,3 +136,13 @@ Scaffold-DbContext "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=EFCore;In
 [ 參考資源 文章 ][[ASP.NET MVC]使用 DataAnnotations 屬性](https://dotblogs.com.tw/chentingw/2016/11/28/235523 "")  
 [ 參考資源 影片 ][Working with an Existing Database | Entity Framework Core 101 [2 of 5]](https://www.youtube.com/watch?v=-sftSA9_X-k&list=PLdo4fOcmZ0oX7uTkjYwvCJDG2qhcSzwZ6&index=2 "")  
 
+
+# 第三章 MVC專案建立DB連結在Startup.cs
+Startup.cs的ConfigureServices內建立連結
+```C#
+services.AddDbContext<CCIPContext>(options => options.UseSqlServer("Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=EFCore;Integrated Security=True"));
+```
+![image](https://github.com/Tim-SideProjectOrTool/Learn-EFCore/blob/master/ConsoleApp1/GitImage/mvc%E5%B0%88%E6%A1%88%E5%BB%BA%E7%AB%8Bdb%E9%80%A3%E7%B5%90%E5%9C%A8Startup.cs.png)  
+
+
+[ 參考資源 文章 ][微軟文件](https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-strings "")  
