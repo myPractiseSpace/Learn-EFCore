@@ -1,9 +1,8 @@
 # Learn-EFCore
 學習EF Core
 
-# 第一章建立Model
-以Code-first方法建立
-## 第一步:
+
+# 環境建置
 ### 安裝EFCore相關Nuget
 
 Install-Package Microsoft.EntityFrameworkCore.SqlServer   
@@ -11,7 +10,9 @@ Install-Package Microsoft.EntityFrameworkCore.Design
 Install-Package Microsoft.EntityFrameworkCore.Tools  
 
 
-## 第二步:
+# 第一章建立Model (Code-first)
+以Code-first方法建立
+## 第一步:
 新增一個資料夾,取名:Model or Domain  
 新增以下所有class  
 ```C#
@@ -80,23 +81,27 @@ public class ContosoPetsContext: DbContext
 ```  
 ![image](https://github.com/Tim-SideProjectOrTool/Learn-EFCore/blob/master/ConsoleApp1/GitImage/%E6%96%B0%E5%A2%9EDBclass.PNG)
 
-## 第三步:
+## 第二步:
 新增第一個DB搬移紀錄  
 因為第一個紀錄取名為:InitialCreate  
+開啟[套件管理主控台]
 PM> Add-Migration  InitialCreate  
+參考: https://docs.microsoft.com/zh-tw/ef/core/managing-schemas/migrations/?tabs=vs
 ![image](https://github.com/Tim-SideProjectOrTool/Learn-EFCore/blob/master/ConsoleApp1/GitImage/Add-Migration%20%20InitialCreate.PNG)  
 
-## 第四步:
+## 第三步:
 更新DB  
 PM> update-database -verbose  
 ![image](https://github.com/Tim-SideProjectOrTool/Learn-EFCore/blob/master/ConsoleApp1/GitImage/update-database%20-verbose.PNG)  
 
 # 註:
-如果Model更動就重複第三'四步,  
+如果Model更動就重複第二'三步,  
 建立搬移檔紀錄,在更新  
 ``` C#
 PM> Add-Migration  [記錄名稱]  
 PM> update-database -verbose  
+
+多個提供者方法可參考:https://docs.microsoft.com/zh-tw/ef/core/managing-schemas/migrations/providers?tabs=vs
 ```  
 
 
@@ -105,11 +110,13 @@ PM> update-database -verbose
 ## 第一步:
 ### 執行DB連線建立Model
 ```C#
-Scaffold-DbContext "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=EFCore;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context CCIPContext -DataAnnotations -Force
+開啟[套件管理主控台]
+PM> Scaffold-DbContext "Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=EFCore;Integrated Security=True" Microsoft.EntityFrameworkCore.SqlServer -OutputDir Models -Context CCIPContext -DataAnnotations -Force
 //-OutputDir 資料夾名   :建立的資料夾名
 //-Context 連線檔檔名   :建立連線檔檔名
 //-DataAnnotations     :加上欄位設定內容
 //-Force               :強制產生新Model
+參考: https://docs.microsoft.com/zh-tw/ef/core/cli/powershell#scaffold-dbcontext
 ```
 執行完語法後,如圖自動產生Model  
 ![image](https://github.com/Tim-SideProjectOrTool/Learn-EFCore/blob/master/ConsoleApp1/GitImage/DBFirst%E5%9F%B7%E8%A1%8CScaffold-DbContext%E5%BE%8C%E7%94%A2%E7%94%9F%E7%9A%84Model.PNG)  
