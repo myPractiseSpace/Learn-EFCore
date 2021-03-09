@@ -153,3 +153,10 @@ services.AddDbContext<CCIPContext>(options => options.UseSqlServer("Data Source=
 
 
 [ 參考資源 文章 ][微軟文件](https://docs.microsoft.com/en-us/ef/core/miscellaneous/connection-strings "")  
+
+------------------------------------------------------------------------------------------------------------
+# 第一次執行會員功能
+appsettings.json檔=>[ConnectionStrings][DefaultConnection][Database]改為[T_AccountDB]  
+第一次執行會員功能出現無DB提示畫面,點選[Apply Migrations]自動產生DB  
+截圖畫面是 初始專案使用會員登入或是註冊會員後提示無DB畫面  
+![image](https://raw.githubusercontent.com/Tim-SideProjectOrTool/Learn-EFCore/develop/NetCoreMVC/%E6%88%AA%E5%9C%96/%E5%88%9D%E5%A7%8B%E5%B0%88%E6%A1%88%E4%BD%BF%E7%94%A8%E6%9C%83%E5%93%A1%E7%99%BB%E5%85%A5%E6%88%96%E6%98%AF%E8%A8%BB%E5%86%8A%E6%9C%83%E5%93%A1%E5%BE%8C%E6%8F%90%E7%A4%BA%E7%84%A1DB%E7%95%AB%E9%9D%A2.png)  
