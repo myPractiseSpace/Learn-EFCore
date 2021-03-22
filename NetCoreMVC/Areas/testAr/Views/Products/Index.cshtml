@@ -22,20 +22,44 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Price)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.LabelFor(modelItem => item.Price, item.Price.ToString(), htmlAttributes: new { @for = "Pj"+item.Id.ToString() })
+                </td>
+                <td>
+                    <a>API改金額</a><input id="Pj@(item.Id)" value="" /><button name="UpdatePrice" data-id="@(item.Id)" data-bind-el="Pj@(item.Id)">確認</button>
+                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>
+<script src="~/js/AjaxSetting.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("button[name=UpdatePrice]").on("click", function () {
+            //純數字
+            if (!/^\s*$|\D/.test(Ajax_data($(this)).Price)) {
+                var respon = AjaxPost(true, "Products", Ajax_data($(this)));
+                if (respon=="OK") {
+                    $("label[for=" + $(this).data("bind-el") + "]").text($("#" + $(this).data("bind-el")).val())
+                }
+            }
+        });
+    });
+    function Ajax_data(DOM) {
+        var jsonRq = {
+            ID: DOM.data("id"),
+            Price: $("#" + DOM.data("bind-el")).val()
+        }
+        return jsonRq;
+    }
+</script>
