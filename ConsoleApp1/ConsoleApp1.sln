@@ -5,7 +5,9 @@ VisualStudioVersion = 16.0.30011.22
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleApp1", "ConsoleApp1.csproj", "{A3833DBB-141F-43CA-BD13-FAB83F35844E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NetCoreMVC", "..\NetCoreMVC\NetCoreMVC.csproj", "{D66D5870-41CA-4F78-AAAF-F954DB14F812}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NetCoreMVC", "..\NetCoreMVC\NetCoreMVC.csproj", "{D66D5870-41CA-4F78-AAAF-F954DB14F812}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReactProject", "..\ReactProject\ReactProject.csproj", "{D54A6964-DDCA-42F5-9E5F-C5A246CBFB21}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{D66D5870-41CA-4F78-AAAF-F954DB14F812}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D66D5870-41CA-4F78-AAAF-F954DB14F812}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D66D5870-41CA-4F78-AAAF-F954DB14F812}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D54A6964-DDCA-42F5-9E5F-C5A246CBFB21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D54A6964-DDCA-42F5-9E5F-C5A246CBFB21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D54A6964-DDCA-42F5-9E5F-C5A246CBFB21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D54A6964-DDCA-42F5-9E5F-C5A246CBFB21}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
